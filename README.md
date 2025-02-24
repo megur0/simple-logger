@@ -22,7 +22,7 @@ import (
 	"context"
 	"strconv"
 
-	simplelog "github.com/megur0/simple-logger"
+	"github.com/megur0/simple-logger/simplelog"
 )
 
 func main() {
