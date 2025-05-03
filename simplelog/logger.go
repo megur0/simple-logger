@@ -56,6 +56,7 @@ func New(logLevel LogLevel, logMode LogMode, logHandler LogHandler, useGcpLoggin
 	}
 	l.LogMode = logMode
 	l.LogHandler = logHandler
+	l.UseGcpLogging = useGcpLogging
 
 	// slogをCloud Loggingで必要な形式にカスタマイズする。
 	// https://cloud.google.com/logging/docs/structured-logging?hl=ja
@@ -206,7 +207,7 @@ func (l Logger) Errorf(context context.Context, format string, args ...any) {
 
 func (l Logger) lArgs(context context.Context, printLevel logPrintLevel, skip int, args ...any) {
 	format := ""
-	for i := 0; i < len(args); i++ {
+	for i := range args {
 		if i != 0 {
 			format += " "
 		}
