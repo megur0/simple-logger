@@ -140,7 +140,7 @@ func (l Logger) l(context context.Context, level logPrintLevel, format string, s
 		}
 	case PRINT_ERROR:
 		if l.UseGcpLogging {
-			l.Slogger.Error("error", slog.String("error", out), callerAttr, traceAttr, labelsAttr)
+			l.Slogger.Error(out, slog.String("error", out), callerAttr, traceAttr, labelsAttr)
 		} else {
 			l.Slogger.Error(out)
 		}
